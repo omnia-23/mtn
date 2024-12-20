@@ -30,6 +30,7 @@ class UserRepository {
             .leftJoin(models_1.userRoleTable, (0, drizzle_orm_1.eq)(models_1.userRoleTable.user_id, models_1.userTable.id))
             .leftJoin(models_1.roleTable, (0, drizzle_orm_1.eq)(models_1.userRoleTable.role_id, models_1.roleTable.id))
             .groupBy(models_1.userTable.id)
+            .orderBy((0, drizzle_orm_1.desc)(models_1.userTable.createdAt))
             .offset(Number(skip))
             .limit(Number(limit));
         return users;

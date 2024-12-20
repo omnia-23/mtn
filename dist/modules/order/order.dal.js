@@ -29,6 +29,7 @@ class OrderRepository {
                 .leftJoin(models_1.productTable, (0, drizzle_orm_1.eq)(models_1.productTable.id, models_1.orderDetailsTable.product_id))
                 .innerJoin(models_1.userTable, (0, drizzle_orm_1.eq)(models_1.userTable.id, models_1.orderTable.user_id))
                 .groupBy(models_1.orderTable.id, models_1.userTable.id)
+                .orderBy((0, drizzle_orm_1.desc)(models_1.orderTable.createdAt))
                 .limit(Number(limit))
                 .offset(Number(skip));
             return orders;
@@ -146,6 +147,7 @@ class OrderRepository {
             .leftJoin(models_1.orderDetailsTable, (0, drizzle_orm_1.eq)(models_1.orderDetailsTable.order_id, models_1.orderTable.id))
             .leftJoin(models_1.productTable, (0, drizzle_orm_1.eq)(models_1.productTable.id, models_1.orderDetailsTable.product_id))
             .groupBy(models_1.orderTable.id)
+            .orderBy((0, drizzle_orm_1.desc)(models_1.orderTable.createdAt))
             .limit(Number(limit))
             .offset(Number(skip));
         return orders;

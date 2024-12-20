@@ -8,17 +8,18 @@ const database_1 = __importDefault(require("../../db/database"));
 const models_1 = require("../../db/models");
 class ProductRepository {
     async findAll(limit = 10, skip = 0) {
-        const users = await database_1.default
+        const products = await database_1.default
             .select()
             .from(models_1.productTable)
             .groupBy(models_1.productTable.id)
+            .orderBy((0, drizzle_orm_1.desc)(models_1.productTable.createdAt))
             .offset(Number(skip))
             .limit(Number(limit));
-        return users;
+        return products;
     }
     async findById(id) {
-        const users = await database_1.default.select().from(models_1.productTable).where((0, drizzle_orm_1.eq)(models_1.productTable.id, id));
-        return users[0];
+        const products = await database_1.default.select().from(models_1.productTable).where((0, drizzle_orm_1.eq)(models_1.productTable.id, id));
+        return products[0];
     }
     async create(data) {
         const newUser = await database_1.default.insert(models_1.productTable).values(data).returning();
