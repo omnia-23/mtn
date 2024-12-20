@@ -2,12 +2,12 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
 import config from './config';
 import { getConfig } from 'dotenv-handler';
 import { errorHandler } from './middleware/errorHandler.middleware';
 import indexRouter from './routers/index.router';
 import rateLimit from 'express-rate-limit';
+import dotenv from 'dotenv';
 dotenv.config();
 config();
 

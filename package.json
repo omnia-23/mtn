@@ -2,8 +2,7 @@
   "name": "mtn",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
-  "type": "module",
+  "main": "index.js",
   "engines": {
     "node": "20.x"
   },
@@ -11,7 +10,8 @@
     "start": "node dist/index.js",
     "build": "tsc",
     "test": "jest",
-    "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
+    "dev": "cross-env NODE_ENV=development vercel dev",
+    "user:dev": "cross-env NODE_ENV=development nodemon src/index.ts",
     "migrate": "cross-env NODE_ENV=development drizzle-kit generate&&cross-env NODE_ENV=development drizzle-kit migrate"
   },
   "keywords": [],
