@@ -12,4 +12,5 @@ https://app.swaggerhub.com/apis-docs/OMNIAKHALED239/MTNApis/1.0.0
 4. Install pnpm `npm install -g pnpm`
 5. Run `pnpm install`
 6. Run `pnpm migrate`
-7. Run `pnpm dev`
+7. Run `pnpm seed`
+8. Run `pnpm dev`
