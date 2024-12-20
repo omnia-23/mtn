@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -34,8 +34,8 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.use((req, res) => {
-  res.status(404).json({ message: 'Route not found' });
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello, Vercel with TypeScript!');
 });
 
 app.listen(PORT, () => {
