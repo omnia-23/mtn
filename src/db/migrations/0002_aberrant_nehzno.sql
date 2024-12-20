@@ -1,0 +1,1 @@
+ALTER TABLE "user_role" ADD COLUMN "assigned_at" timestamp DEFAULT now();
