@@ -1,22 +1,23 @@
-import { eq } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 import db from '../../db/database';
 import { productTable } from '../../db/models';
 import { IAddProduct } from './dto/add-product.dto';
 
 class ProductRepository {
   async findAll(limit = 10, skip = 0) {
-    const users = await db
+    const products = await db
       .select()
       .from(productTable)
       .groupBy(productTable.id)
+      .orderBy(desc(productTable.createdAt))
       .offset(Number(skip))
       .limit(Number(limit));
-    return users;
+    return products;
   }
 
   async findById(id: number) {
-    const users = await db.select().from(productTable).where(eq(productTable.id, id));
-    return users[0];
+    const products = await db.select().from(productTable).where(eq(productTable.id, id));
+    return products[0];
   }
 
   async create(data: IAddProduct) {

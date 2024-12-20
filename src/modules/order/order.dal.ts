@@ -1,4 +1,4 @@
-import { eq, inArray, sql } from 'drizzle-orm';
+import { desc, eq, inArray, sql } from 'drizzle-orm';
 import db from '../../db/database';
 import { orderDetailsTable, orderTable, productTable, userTable } from '../../db/models';
 import HttpError from '../../utils/HttpError';
@@ -24,6 +24,7 @@ class OrderRepository {
       .leftJoin(productTable, eq(productTable.id, orderDetailsTable.product_id))
       .innerJoin(userTable, eq(userTable.id, orderTable.user_id))
       .groupBy(orderTable.id, userTable.id)
+      .orderBy(desc(orderTable.createdAt))
       .limit(Number(limit))
       .offset(Number(skip));
     return orders;
@@ -47,6 +48,7 @@ class OrderRepository {
       .leftJoin(orderDetailsTable, eq(orderDetailsTable.order_id, orderTable.id))
       .leftJoin(productTable, eq(productTable.id, orderDetailsTable.product_id))
       .groupBy(orderTable.id)
+      .orderBy(desc(orderTable.createdAt))
       .limit(Number(limit))
       .offset(Number(skip));
     return orders;

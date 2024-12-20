@@ -1,4 +1,4 @@
-import { eq, sql } from 'drizzle-orm';
+import { desc, eq, sql } from 'drizzle-orm';
 import db from '../../db/database';
 import { IUserDTO } from './dto/user.dto';
 import { IUserInputDTO } from './dto/user-input';
@@ -28,6 +28,7 @@ class UserRepository {
       .leftJoin(userRoleTable, eq(userRoleTable.user_id, userTable.id))
       .leftJoin(roleTable, eq(userRoleTable.role_id, roleTable.id))
       .groupBy(userTable.id)
+      .orderBy(desc(userTable.createdAt))
       .offset(Number(skip))
       .limit(Number(limit));
     return users;
@@ -52,6 +53,7 @@ class UserRepository {
       .leftJoin(roleTable, eq(userRoleTable.role_id, roleTable.id));
     return user;
   }
+
   async create(data: IUserInputDTO) {
     const newUser = await db.insert(userTable).values(data).returning();
     return newUser[0];
