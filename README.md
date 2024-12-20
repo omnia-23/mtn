@@ -2,7 +2,7 @@
 
 ## Swagger link
 
-https://app.swaggerhub.com/apis/OMNIAKHALED239/MTNApis/1.0.0
+https://app.swaggerhub.com/apis-docs/OMNIAKHALED239/MTNApis/1.0.0
 
 ## Installation
 
