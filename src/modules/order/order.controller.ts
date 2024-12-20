@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { AuthenticatedRequest } from '../../@types/express';
 import { asyncHandler } from '../../utils/asyncHandler';
-import OrderService from './order.services';
+import OrderService from './order.service';
 import { IFiltersDTO } from './dto/filters.dto';
 
 export const placeOrderHandler = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
