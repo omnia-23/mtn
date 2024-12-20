@@ -14,3 +14,4 @@ https://app.swaggerhub.com/apis-docs/OMNIAKHALED239/MTNApis/1.0.0
 6. Run `pnpm migrate`
 7. Run `pnpm seed`
 8. Run `pnpm dev`
+8. Run `pnpm jest` for running tests
